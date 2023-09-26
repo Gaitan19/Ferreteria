@@ -22,7 +22,7 @@ const Menu = () => {
   const [activeKey, setActiveKey] = useState(1);
 
   return (
-    <div>
+    <div className="Container">
       <CNavbar colorScheme="light" className="bg-light">
         <CContainer fluid>
           <CNavbarBrand>User</CNavbarBrand>
@@ -60,7 +60,7 @@ const Menu = () => {
         </CContainer>
       </CNavbar>
 
-      <CTabContent>
+      <CTabContent className="Container-content">
         <CTabPane
           role="tabpanel"
           aria-labelledby="home-tab-pane"

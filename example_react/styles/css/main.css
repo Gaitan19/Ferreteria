@@ -9579,4 +9579,12 @@ h1, .h1, h2, .h2, h3, .h3 {
   flex-direction: column;
   width: 100%; }
 
+.Container {
+  display: flex;
+  flex-direction: column;
+  gap: 100px; }
+  .Container-content {
+    padding: 20px 10px;
+    width: 79%; }
+
 /*# sourceMappingURL=main.css.map */
