@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <HeadPage title="Example react" />
-      <Login></Login>
+      <Login customClass="Login"></Login>
     </>
   );
 }
