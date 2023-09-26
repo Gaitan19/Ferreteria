@@ -60,7 +60,7 @@ const Login = (props) => {
         />
         <div className="Format-container">
           <div className="Login-title">
-            <h2 className="Format-title">WELCOME TO THE TODO APP</h2>
+            <h2 className="Format-title">Ferreteria la union</h2>
           </div>
 
           <Input
