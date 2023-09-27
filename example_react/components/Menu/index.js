@@ -23,7 +23,7 @@ const Menu = () => {
 
   return (
     <div className="Container">
-      <CNavbar colorScheme="light" className="bg-light">
+      <CNavbar colorScheme="light" className="bg-light Navbar">
         <CContainer fluid>
           <CNavbarBrand></CNavbarBrand>
           <CNavbarToggler
