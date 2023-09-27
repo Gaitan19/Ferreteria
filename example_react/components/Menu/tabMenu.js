@@ -16,7 +16,7 @@ const TabMenu = (props) => {
             aria-selected={activeKey === 1}
             onClick={() => setActiveKey(1)}
           >
-            Home
+            Inicio
           </CNavLink>
         </CNavItem>
         <CNavItem role="presentation">
@@ -28,7 +28,7 @@ const TabMenu = (props) => {
             aria-selected={activeKey === 2}
             onClick={() => setActiveKey(2)}
           >
-            Profile
+            Proveedores
           </CNavLink>
         </CNavItem>
         <CNavItem role="presentation">
@@ -40,7 +40,7 @@ const TabMenu = (props) => {
             aria-selected={activeKey === 3}
             onClick={() => setActiveKey(3)}
           >
-            Contact
+            Inventario
           </CNavLink>
         </CNavItem>
         <CNavItem role="presentation">
@@ -52,7 +52,7 @@ const TabMenu = (props) => {
             aria-selected={activeKey === 4}
             onClick={() => setActiveKey(4)}
           >
-            Disabled
+            Factura
           </CNavLink>
         </CNavItem>
       </CNav>

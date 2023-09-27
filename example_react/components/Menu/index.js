@@ -25,7 +25,7 @@ const Menu = () => {
     <div className="Container">
       <CNavbar colorScheme="light" className="bg-light">
         <CContainer fluid>
-          <CNavbarBrand>User</CNavbarBrand>
+          <CNavbarBrand></CNavbarBrand>
           <CNavbarToggler
             aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
@@ -38,6 +38,7 @@ const Menu = () => {
             visible={visible}
             onHide={() => setVisible(false)}
             backdrop={false}
+            className="Menu"
           >
             <COffcanvasHeader>
               <COffcanvasTitle>Menu</COffcanvasTitle>

@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <>
       <HeadPage title="Example react" />
-      {/* <Login customClass="Login"></Login> */}
-      <Menu />
+      <Login customClass="Login" imageLogoUrl="/icono_herramientas.png"></Login>
+      {/* <Menu /> */}
     </>
   );
 }

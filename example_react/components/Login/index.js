@@ -5,7 +5,8 @@ import Image from 'next/image';
 import Input from '../Input';
 import Button from '../Button';
 import { alertMessage } from '../Alert';
-import routes from '@/constants/routes';
+import { routes } from '@/constants/routes';
+import { CButton } from '@coreui/react';
 
 const Login = (props) => {
   const { customClass, format, imageLogoUrl, imageLogoDescription } = props;
@@ -16,8 +17,8 @@ const Login = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Se hizo submit :>> ');
-    alertMessage.success('se logeo');
+    router.push(routes.menu);
+
     /*  try {
       e.preventDefault();
       const credentials = {
@@ -53,14 +54,14 @@ const Login = (props) => {
       <div className={customClass}>
         <Image
           width={112}
-          height={79}
+          height={112}
           src={imageLogoUrl}
           alt={imageLogoDescription}
           priority
         />
         <div className="Format-container">
           <div className="Login-title">
-            <h2 className="Format-title">Ferreteria la union</h2>
+            <h2 className="Format-title">Iniciar Sesion</h2>
           </div>
 
           <Input
@@ -79,7 +80,13 @@ const Login = (props) => {
             onChange={handleChangepassword}
           />
 
-          <Button customClass="Button" buttonText="Login" buttonType="submit" />
+          {/* <Button customClass="Button" buttonText="Login" buttonType="submit" /> */}
+          <CButton
+            component="input"
+            type="submit"
+            color="primary"
+            value="Iniciar Sesion"
+          />
         </div>
       </div>
     </form>
