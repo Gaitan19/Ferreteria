@@ -9549,6 +9549,10 @@ h1, .h1, h2, .h2, h3, .h3 {
   padding: 11px 0;
   text-indent: 8px;
   width: 100%; }
+  .Input-login {
+    width: 100%; }
+  .Input-password {
+    padding-right: 36px; }
   .Input::placeholder {
     color: #bcc1c5; }
   .Input:focus-visible {
@@ -9578,6 +9582,15 @@ h1, .h1, h2, .h2, h3, .h3 {
   line-height: 15px;
   padding: 15px 166.5px;
   width: 100%; }
+  .Button-password {
+    background: none;
+    border: none;
+    bottom: 50%;
+    left: 92%;
+    position: relative; }
+  .Button-icon {
+    border: none;
+    font-size: 20px; }
 
 .Tab {
   display: flex;

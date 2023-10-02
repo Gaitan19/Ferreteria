@@ -10,18 +10,23 @@ const Input = (props) => {
     type,
     required,
     onChange,
+    children,
+    divClass,
   } = props;
 
   return (
     <div className={customClass}>
       <label className={labelCustomClass}>{text}</label>
-      <input
-        className={inputCustomClass}
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        onChange={onChange}
-      />
+      <div className={divClass}>
+        <input
+          className={inputCustomClass}
+          type={type}
+          placeholder={placeholder}
+          required={required}
+          onChange={onChange}
+        />
+        {children}
+      </div>
     </div>
   );
 };
@@ -35,6 +40,8 @@ Input.propTypes = {
   required: PropTypes.string,
   type: PropTypes.oneOf(['text', 'email', 'password', 'checkbox']),
   onChange: PropTypes.func,
+  divClass: PropTypes.string,
+  children: PropTypes.node,
 };
 
 Input.defaultProps = {
@@ -45,6 +52,8 @@ Input.defaultProps = {
   type: 'text',
   required: 'required',
   onChange: () => {},
+  divClass: '',
+  children: <></>,
 };
 
 export default Input;

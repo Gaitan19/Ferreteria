@@ -7,12 +7,14 @@ import Button from '../Button';
 import { alertMessage } from '../Alert';
 import { routes } from '@/constants/routes';
 import { CButton } from '@coreui/react';
+import { FaEyeSlash, FaEye } from 'react-icons/fa';
 
 const Login = (props) => {
   const { customClass, format, imageLogoUrl, imageLogoDescription } = props;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [visiblePassword, setVisiblePassword] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (event) => {
@@ -49,6 +51,10 @@ const Login = (props) => {
     setPassword(event.target.value);
   };
 
+  const handleVisiblePassword = () => {
+    setVisiblePassword(!visiblePassword);
+  };
+
   return (
     <form className="d-flex justify-content-center" onSubmit={handleSubmit}>
       <div className={customClass}>
@@ -70,17 +76,30 @@ const Login = (props) => {
             placeholder="Email Address"
             type="email"
             onChange={handleChangeEmail}
+            divClass="Input-login"
           />
 
           <Input
             customClass="Input-container"
+            inputCustomClass="Input Input-password"
             text="Password"
             placeholder="************"
-            type="password"
+            type={`${visiblePassword ? 'text' : 'password'}`}
             onChange={handleChangepassword}
-          />
+            divClass="Input-login"
+          >
+            <Button
+              customClass="Button-password"
+              onClick={handleVisiblePassword}
+            >
+              {visiblePassword ? (
+                <FaEyeSlash className="Button-icon" />
+              ) : (
+                <FaEye className="Button-icon" />
+              )}
+            </Button>
+          </Input>
 
-          {/* <Button customClass="Button" buttonText="Login" buttonType="submit" /> */}
           <CButton
             component="input"
             type="submit"
@@ -90,37 +109,6 @@ const Login = (props) => {
         </div>
       </div>
     </form>
-
-    // <Form
-    //   customClass={customClass}
-    //   imageUrl="/logo-smbs.png"
-    //   imageDescription="logo-smbs"
-    //   onSubmit={handleSubmit}
-    // >
-    //   <FormTitle
-    //     customClass="Login-title"
-    //     formatText="Format"
-    //     title="WELCOME TO THE TODO APP"
-    //   />
-
-    //   <Input
-    //     customClass="Input-container"
-    //     text="Email Address"
-    //     placeholder="Email Address"
-    //     type="email"
-    //     onChange={handleChangeEmail}
-    //   />
-
-    //   <Input
-    //     customClass="Input-container"
-    //     text="Password"
-    //     placeholder="************"
-    //     type="password"
-    //     onChange={handleChangepassword}
-    //   />
-
-    //   <Button customClass="Button" buttonText="Login" buttonType="submit" />
-    // </Form>
   );
 };
 

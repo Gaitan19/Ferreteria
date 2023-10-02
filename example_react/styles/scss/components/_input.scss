@@ -12,6 +12,13 @@
     text-indent: 8px;
     width: 100%;
 
+    &-login {
+        width: 100%;
+    }
+    &-password {
+        padding-right: 36px;
+    }
+
     &::placeholder {
         color: $light-steel;
     }
