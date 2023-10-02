@@ -11,7 +11,9 @@ import {
 import { v4 } from 'uuid';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { menuOptions } from '@/constants/routes';
+import { menuOptions, routes } from '@/constants/routes';
+import { FaSignOutAlt } from 'react-icons/fa';
+import Button from '../Button';
 
 const Menu = (props) => {
   const { visible, setVisible } = props;
@@ -24,11 +26,18 @@ const Menu = (props) => {
       console.log('isActive :>> ', isActive);
       console.log('_____________________________');
       return (
-        <CNavItem key={v4()} className={` ${isActive && 'Item-active'}`}>
+        <CNavItem
+          key={v4()}
+          className={`Item Menu-border ${isActive && 'Item-active'}`}
+        >
           <CNavLink href={option.route}>{option.text}</CNavLink>
         </CNavItem>
       );
     });
+  };
+
+  const handleLogout = () => {
+    router.push(routes.login);
   };
 
   return (
@@ -41,7 +50,7 @@ const Menu = (props) => {
       backdrop={false}
       className="Menu"
     >
-      <COffcanvasHeader>
+      <COffcanvasHeader className="Menu-border">
         <COffcanvasTitle>Menu</COffcanvasTitle>
         <CCloseButton
           className="text-reset"
@@ -49,8 +58,19 @@ const Menu = (props) => {
         />
       </COffcanvasHeader>
 
-      <COffcanvasBody>
-        <CNavbarNav>{renderMenu()}</CNavbarNav>
+      <COffcanvasBody className="Menu-body">
+        <CNavbarNav>
+          {renderMenu()}
+          <CNavItem className="Item">
+            <Button
+              buttonText="Cerrar sesion"
+              customClass="Button-logout"
+              onClick={handleLogout}
+            >
+              <FaSignOutAlt></FaSignOutAlt>
+            </Button>
+          </CNavItem>
+        </CNavbarNav>
       </COffcanvasBody>
     </COffcanvas>
   );

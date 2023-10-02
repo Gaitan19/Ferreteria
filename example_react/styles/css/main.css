@@ -9591,6 +9591,16 @@ h1, .h1, h2, .h2, h3, .h3 {
   .Button-icon {
     border: none;
     font-size: 20px; }
+  .Button-logout {
+    align-items: center;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: flex-start;
+    padding: 0.5rem 0;
+    width: 100%; }
 
 .Tab {
   display: flex;
@@ -9610,12 +9620,24 @@ h1, .h1, h2, .h2, h3, .h3 {
 
 .Menu {
   width: 15% !important; }
+  .Menu-border {
+    border-bottom: 1px solid #ddd; }
+  .Menu-body {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0; }
+
+.Item {
+  padding: 0 0.5rem; }
+  .Item:hover {
+    background: #928e8e; }
+  .Item-active {
+    background: #928e8e; }
 
 .Navbar {
   background: #c0d6df !important; }
-
-.Item-active {
-  background: #928e8e; }
+  .Navbar-toggler:focus {
+    box-shadow: 0 0 0 0.1rem !important; }
 
 .Carrusel {
   margin-left: 20%;

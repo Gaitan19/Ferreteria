@@ -1,3 +1,25 @@
 .Menu {
     width: 15% !important;
+
+    &-border {
+        border-bottom: 1px solid $menu-header-border;
+    }
+
+    &-body {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+    }
+}
+
+.Item {
+    padding: 0 0.5rem;
+
+    &:hover {
+        background: $medium-gray;
+    }
+
+    &-active {
+        background: $medium-gray;
+    }
 }

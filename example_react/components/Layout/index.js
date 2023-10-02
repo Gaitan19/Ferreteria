@@ -26,6 +26,7 @@ const Layout = (props) => {
             aria-controls="offcanvasNavbar"
             aria-label="Toggle navigation"
             onClick={() => setVisible(!visible)}
+            className="Navbar-toggler"
           />
         </CContainer>
       </CNavbar>

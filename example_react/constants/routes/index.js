@@ -1,37 +1,27 @@
 /* eslint-disable import/prefer-default-export */
 export const routes = {
-  menu: '/Home',
+  menu: '/Dashboard',
   login: '/',
-  option2: '/Option2',
-  option3: '/Option3',
-  option4: '/Option4',
-  option5: '/Option5',
-  option6: '/Option6',
+  option2: '/Inventario',
+  option3: '/Proveedor',
+  option4: '/Facturar',
 };
 
 export const menuOptions = [
   {
-    text: 'Home',
+    text: 'Dashboard',
     route: routes.menu,
   },
   {
-    text: 'Option2',
+    text: 'Inventario',
     route: routes.option2,
   },
   {
-    text: 'Option3',
+    text: 'Proveedor',
     route: routes.option3,
   },
   {
-    text: 'Option4',
+    text: 'Facturar',
     route: routes.option4,
-  },
-  {
-    text: 'Option5',
-    route: routes.option5,
-  },
-  {
-    text: 'Option6',
-    route: routes.option6,
   },
 ];

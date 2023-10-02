@@ -1,9 +1,9 @@
 .Navbar {
-    background: $Light-steel-blue !important;
-}
+    background: $navbar-color !important;
 
-.Item {
-    &-active {
-        background: $medium-gray;
+    &-toggler {
+        &:focus {
+            box-shadow: 0 0 0 0.1rem !important;
+        }
     }
 }
