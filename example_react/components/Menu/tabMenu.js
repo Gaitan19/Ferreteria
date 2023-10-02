@@ -28,7 +28,7 @@ const TabMenu = (props) => {
             aria-selected={activeKey === 2}
             onClick={() => setActiveKey(2)}
           >
-            Proveedores
+            opction2
           </CNavLink>
         </CNavItem>
         <CNavItem role="presentation">
@@ -40,7 +40,7 @@ const TabMenu = (props) => {
             aria-selected={activeKey === 3}
             onClick={() => setActiveKey(3)}
           >
-            Inventario
+            optiion3
           </CNavLink>
         </CNavItem>
         <CNavItem role="presentation">
@@ -52,7 +52,7 @@ const TabMenu = (props) => {
             aria-selected={activeKey === 4}
             onClick={() => setActiveKey(4)}
           >
-            Factura
+            option4
           </CNavLink>
         </CNavItem>
       </CNav>

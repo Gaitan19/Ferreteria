@@ -1,3 +1,9 @@
 .Navbar {
     background: $Light-steel-blue !important;
 }
+
+.Item {
+    &-active {
+        background: $medium-gray;
+    }
+}

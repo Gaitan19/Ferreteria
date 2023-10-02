@@ -1,0 +1,27 @@
+body {
+    // background-color: $gray-700;
+}
+
+.Carrusel {
+    margin-left: 20%;
+    width: 28%;
+
+    & span {
+        background-color: $dark-shadow;
+    }
+
+    &-item {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 10px;
+        max-width: 430px;
+    }
+}
+
+.Card {
+    &-image {
+        max-height: 202.5px;
+        min-height: 202.5px;
+        overflow: hidden;
+    }
+}

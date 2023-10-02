@@ -9589,13 +9589,35 @@ h1, .h1, h2, .h2, h3, .h3 {
   flex-direction: column;
   gap: 100px; }
   .Container-content {
-    padding: 20px 10px;
-    width: 79%; }
+    display: flex;
+    flex-direction: column; }
+  .Container-options {
+    margin: 0 40px;
+    width: 80%; }
 
 .Menu {
-  width: 20% !important; }
+  width: 15% !important; }
 
 .Navbar {
   background: #c0d6df !important; }
+
+.Item-active {
+  background: #928e8e; }
+
+.Carrusel {
+  margin-left: 20%;
+  width: 28%; }
+  .Carrusel span {
+    background-color: rgba(0, 0, 0, 0.5); }
+  .Carrusel-item {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px;
+    max-width: 430px; }
+
+.Card-image {
+  max-height: 202.5px;
+  min-height: 202.5px;
+  overflow: hidden; }
 
 /*# sourceMappingURL=main.css.map */
