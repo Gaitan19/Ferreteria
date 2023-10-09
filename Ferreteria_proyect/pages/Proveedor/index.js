@@ -9,7 +9,7 @@ import { useState, useEffect, useCallback } from 'react';
 const Proveedor = () => {
   const [alreadyData, setAlreadyData] = useState(false);
   const [dataProveedores, setDataProveedores] = useState([]);
-  const [row, setRow] = useState([]);
+  const [dataRow, setDataRow] = useState([]);
 
   const fetchData = useCallback(async () => {
     try {
@@ -58,8 +58,8 @@ const Proveedor = () => {
     },
 
     {
-      field: 'agregar',
-      headerName: 'agregar',
+      field: 'editar',
+      headerName: 'Editar',
       renderCell: (cellValues) => {
         return (
           <CTooltip content="print pdf" placement="bottom">
@@ -69,11 +69,10 @@ const Proveedor = () => {
               onClick={(event) => {
                 console.log('di click', cellValues);
                 const { row } = cellValues;
-                setData(row);
-                setVisible(true);
+                console.log('info provedoor:', row);
               }}
             >
-              agregar
+              Editar
             </Button>
           </CTooltip>
         );
@@ -116,10 +115,10 @@ const Proveedor = () => {
       });
       console.log('la data de los provedores es:', dataProveedores);
       console.log('las filas soNP', temRow);
-      setRow(temRow);
+      setDataRow(temRow);
       setAlreadyData(true);
     }
-  }, [dataProveedores, row]);
+  }, [dataProveedores, dataRow]);
 
   return (
     <>
@@ -128,7 +127,7 @@ const Proveedor = () => {
         <div className="Proveedor">
           <h2>Proveedores</h2>
           <div className="Container-table">
-            <DataTable columns={columns} rows={row} />
+            <DataTable columns={columns} rows={dataRow} />
           </div>
         </div>
       </Layout>
