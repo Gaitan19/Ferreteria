@@ -1,12 +1,11 @@
 import HeadPage from '@/components/HeadPage';
 import Layout from '@/components/Layout';
-import Login from '@/components/Login';
 
-export default function Home() {
+export default function Facturar() {
   return (
     <>
       <HeadPage title="Example react" />
-      <Login customClass="Login" imageLogoUrl="/icono_herramientas.png" />
+      <Layout></Layout>
     </>
   );
 }

@@ -1,12 +1,14 @@
 import HeadPage from '@/components/HeadPage';
 import Layout from '@/components/Layout';
-import Login from '@/components/Login';
+import Chart from '@/components/Menu/chart';
 
-export default function Home() {
+export default function MenuPrincipal() {
   return (
     <>
       <HeadPage title="Example react" />
-      <Login customClass="Login" imageLogoUrl="/icono_herramientas.png" />
+      <Layout>
+        <Chart></Chart>
+      </Layout>
     </>
   );
 }

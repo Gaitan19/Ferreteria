@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.8.2",
     "@coreui/react": "^5.0.0-alpha.3",
+    "@coreui/react-chartjs": "^2.1.3",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.11",
