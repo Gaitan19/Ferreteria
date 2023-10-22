@@ -12,6 +12,7 @@ const Input = (props) => {
     onChange,
     children,
     divClass,
+    value,
   } = props;
 
   return (
@@ -24,6 +25,7 @@ const Input = (props) => {
           placeholder={placeholder}
           required={required}
           onChange={onChange}
+          value={value}
         />
         {children}
       </div>
@@ -42,6 +44,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   divClass: PropTypes.string,
   children: PropTypes.node,
+  value: PropTypes.string,
 };
 
 Input.defaultProps = {
@@ -54,6 +57,7 @@ Input.defaultProps = {
   onChange: () => {},
   divClass: '',
   children: <></>,
+  value: '',
 };
 
 export default Input;

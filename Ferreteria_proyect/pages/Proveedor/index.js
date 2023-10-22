@@ -7,12 +7,15 @@ import Button from '@/components/Button';
 import { FaPlus } from 'react-icons/fa';
 import Forms from '@/components/Forms';
 import handleApiRequest from '@/services';
+import { alertMessage } from '@/components/Alert';
 
 const Proveedor = () => {
   const [alreadyData, setAlreadyData] = useState(false);
   const [dataProveedores, setDataProveedores] = useState([]);
+  const [dataProveedor, setDataProveedor] = useState({});
   const [dataRow, setDataRow] = useState([]);
   const [visible, setVisible] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
   const [typeForm, setTypeForm] = useState('add');
 
   const fetchData = useCallback(async () => {
@@ -63,16 +66,33 @@ const Proveedor = () => {
       field: 'editar',
       headerName: 'Editar',
       renderCell: (cellValues) => {
+        // las funcion editar
+
+        const handleClickEdit = (event) => {
+          // dataProveedores
+
+          const { row } = cellValues;
+          const tempProveedor = dataProveedores.filter(
+            (proveedorTemp) => proveedorTemp.id === row.id,
+          );
+          console.log(tempProveedor);
+          setDataProveedor(tempProveedor);
+          setEditVisible(true);
+        };
+
+        // ______________________________________________
+
         return (
           <CTooltip content="print pdf" placement="bottom">
             <Button
               variant="contained"
               color="primary"
-              onClick={(event) => {
-                console.log('di click', cellValues);
-                const { row } = cellValues;
-                console.log('info provedoor:', row);
-              }}
+              // onClick={(event) => {
+              //   console.log('di click', cellValues);
+              //   const { row } = cellValues;
+              //   console.log('info provedoor:', row);
+              // }}
+              onClick={handleClickEdit}
             >
               Editar
             </Button>
@@ -120,7 +140,7 @@ const Proveedor = () => {
   }, [dataProveedores, dataRow]);
 
   const handleAdd = () => {
-    console.log('di add');
+    setTypeForm('agregar');
     setVisible(true);
   };
 
@@ -145,10 +165,18 @@ const Proveedor = () => {
                   visible={visible}
                   setVisible={setVisible}
                   type="proveedor"
-                  typeFor={typeForm}
                   setDataProveedores={setDataProveedores}
                   setAlreadyData={setAlreadyData}
-                ></Forms>
+                />
+                <Forms
+                  visible={editVisible}
+                  setVisible={setEditVisible}
+                  type="proveedor"
+                  typeFor="editar"
+                  setDataProveedores={setDataProveedores}
+                  setAlreadyData={setAlreadyData}
+                  item={dataProveedor[0]}
+                />
               </>
             ) : (
               <CSpinner />

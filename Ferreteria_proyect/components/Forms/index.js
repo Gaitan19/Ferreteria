@@ -22,6 +22,7 @@ const Forms = (props) => {
     setVisible,
     setDataProveedores,
     setAlreadyData,
+    item,
   } = props;
 
   const handleForms = () => {
@@ -35,6 +36,7 @@ const Forms = (props) => {
             typeFor={typeFor}
             setDataProveedores={setDataProveedores}
             setAlreadyData={setAlreadyData}
+            proveedor={item}
           ></FormProveedor>
         );
     }
@@ -71,6 +73,7 @@ Forms.propTypes = {
   setVisible: PropTypes.func.isRequired,
   setDataProveedores: PropTypes.func.isRequired,
   setAlreadyData: PropTypes.func.isRequired,
+  item: PropTypes.func,
 };
 
 Forms.defaultProps = {
@@ -80,6 +83,7 @@ Forms.defaultProps = {
   buttonClass: '',
   buttonText: 'Save',
   customClass: 'Forms',
+  item: {},
 };
 
 export default Forms;

@@ -77,12 +77,14 @@ const Login = (props) => {
             type="email"
             onChange={handleChangeEmail}
             divClass="Input-login"
+            value={email}
           />
 
           <Input
             customClass="Input-container"
             inputCustomClass="Input Input-password"
             text="Password"
+            value={password}
             placeholder="************"
             type={`${visiblePassword ? 'text' : 'password'}`}
             onChange={handleChangepassword}
