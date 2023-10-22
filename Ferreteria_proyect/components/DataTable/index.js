@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, customClass } from '@mui/x-data-grid';
 
 const DataTable = (props) => {
-  const { columns, rows, options } = props;
+  const { columns, rows, options, customClass } = props;
 
   return (
     <DataGrid
+      className={customClass}
       rows={rows}
       columns={columns}
       options={options}
@@ -26,6 +27,7 @@ DataTable.propTypes = {
   columns: PropTypes.array,
   rows: PropTypes.array,
   options: PropTypes.object,
+  customClass: PropTypes.string,
 };
 
 DataTable.defaultProps = {
@@ -37,5 +39,6 @@ DataTable.defaultProps = {
     responsive: 'vertical',
     rowsPerPage: 5,
   },
+  customClass: '',
 };
 export default DataTable;

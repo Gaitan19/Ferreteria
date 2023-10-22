@@ -1,27 +1,32 @@
 import DataTable from '@/components/DataTable';
 import HeadPage from '@/components/HeadPage';
 import Layout from '@/components/Layout';
-import handleApiRequest from '@/services';
-import { CTooltip } from '@coreui/react';
-import { Button } from '@mui/material';
+import { CSpinner, CTooltip } from '@coreui/react';
 import { useState, useEffect, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import Button from '@/components/Button';
+import { FaPlus } from 'react-icons/fa';
+import Forms from '@/components/Forms';
 
 const Proveedor = () => {
   const [alreadyData, setAlreadyData] = useState(false);
   const [dataProveedores, setDataProveedores] = useState([]);
   const [dataRow, setDataRow] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [typeForm, setTypeForm] = useState('add');
+
+  const state = useSelector((state) => state);
 
   const fetchData = useCallback(async () => {
-    try {
-      const { data, status } = await handleApiRequest(
-        'GET',
-        '/Proveedor/Get',
-        '',
-      );
-
-      setDataProveedores(data);
-    } catch (error) {
-      alertMessage.error(error);
+    if (state instanceof Promise) {
+      state.then((resolvedState) => {
+        if (resolvedState && resolvedState.ferreteria.proveedores) {
+          const { proveedores } = resolvedState.ferreteria;
+          setDataProveedores(proveedores);
+        }
+      });
+    } else if (state.ferreteria.proveedores) {
+      setDataProveedores(state.ferreteria.proveedores);
     }
   }, [setDataProveedores]);
 
@@ -46,8 +51,7 @@ const Proveedor = () => {
               onClick={(event) => {
                 console.log('di click', cellValues);
                 const { row } = cellValues;
-                setData(row);
-                setVisible(true);
+                console.log(row);
               }}
             >
               show
@@ -91,8 +95,7 @@ const Proveedor = () => {
               onClick={(event) => {
                 console.log('di click', cellValues);
                 const { row } = cellValues;
-                setData(row);
-                setVisible(true);
+                console.log(row);
               }}
             >
               eliminar
@@ -113,12 +116,15 @@ const Proveedor = () => {
           telefono: proveedor.telefonoProveedor,
         });
       });
-      console.log('la data de los provedores es:', dataProveedores);
-      console.log('las filas soNP', temRow);
       setDataRow(temRow);
       setAlreadyData(true);
     }
   }, [dataProveedores, dataRow]);
+
+  const handleAdd = () => {
+    console.log('di add');
+    setVisible(true);
+  };
 
   return (
     <>
@@ -127,7 +133,26 @@ const Proveedor = () => {
         <div className="Proveedor">
           <h2>Proveedores</h2>
           <div className="Container-table">
-            <DataTable columns={columns} rows={dataRow} />
+            {alreadyData ? (
+              <>
+                <DataTable
+                  columns={columns}
+                  rows={dataRow}
+                  customClass="Table"
+                />
+                <Button customClass="Button-add" onClick={handleAdd}>
+                  <FaPlus />
+                </Button>
+                <Forms
+                  visible={visible}
+                  setVisible={setVisible}
+                  type="proveedor"
+                  typeFor={typeForm}
+                ></Forms>
+              </>
+            ) : (
+              <CSpinner />
+            )}
           </div>
         </div>
       </Layout>

@@ -1,28 +1,23 @@
 import { createStore } from 'redux';
-import favoritesReducer from '@/redux/reducers';
+import ferreteriaReducer from '@/redux/reducers';
+import handleApiRequest from '@/services';
 
-const loadLocalStorage = () => {
+const getAllProveedores = async () => {
+  const { data } = await handleApiRequest('GET', '/Proveedor/Get', '');
+  return data;
+};
+
+const loadFromApi = async () => {
   const initialState = {
-    favorites: {
-      pokemons: [],
-      moves: [],
-      items: [],
+    ferreteria: {
+      proveedores: await getAllProveedores(),
+      productos: [],
     },
   };
-
-  if (typeof window !== 'undefined') {
-    return JSON.parse(localStorage.getItem('favorites')) || initialState;
-  }
 
   return initialState;
 };
 
-const store = createStore(favoritesReducer, loadLocalStorage());
-
-const saveLocalStorage = () => {
-  localStorage.setItem('favorites', JSON.stringify(store.getState()));
-};
-
-store.subscribe(() => saveLocalStorage());
+const store = createStore(ferreteriaReducer, loadFromApi());
 
 export default store;

@@ -1,6 +1,10 @@
 .Menu {
     width: 15% !important;
 
+    &-title {
+        font-size: 24px;
+    }
+
     &-border {
         border-bottom: 1px solid $menu-header-border;
     }

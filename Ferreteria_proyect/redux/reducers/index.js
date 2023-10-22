@@ -1,12 +1,10 @@
 const initialState = {
-  favorites: {
-    pokemons: [],
-    moves: [],
-    items: [],
+  ferreteria: {
+    proveedores: [],
   },
 };
 
-const favoritesReducer = (state = initialState, action) => {
+const ferreteriaReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_FAVORITE':
       const { item, itemType } = action.payload;
@@ -38,4 +36,4 @@ const favoritesReducer = (state = initialState, action) => {
   }
 };
 
-export default favoritesReducer;
+export default ferreteriaReducer;

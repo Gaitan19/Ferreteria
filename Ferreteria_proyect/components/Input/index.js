@@ -38,7 +38,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   text: PropTypes.string,
   required: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'email', 'password', 'checkbox']),
+  type: PropTypes.oneOf(['text', 'email', 'password', 'checkbox', 'number']),
   onChange: PropTypes.func,
   divClass: PropTypes.string,
   children: PropTypes.node,

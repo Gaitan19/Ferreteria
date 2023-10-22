@@ -1,0 +1,17 @@
+.Forms {
+    margin: 0 25px;
+
+    &-general {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+}
