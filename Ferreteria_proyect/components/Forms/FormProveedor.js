@@ -6,8 +6,15 @@ import { alertMessage } from '../Alert';
 import handleApiRequest from '@/services';
 
 const FormProveedor = (props) => {
-  const { typeFor, buttonText, buttonClass, setVisible, containerInputs } =
-    props;
+  const {
+    typeFor,
+    buttonText,
+    buttonClass,
+    setVisible,
+    containerInputs,
+    setDataProveedores,
+    setAlreadyData,
+  } = props;
 
   const [provedorName, setProveedorName] = useState('');
   const [provedorDireccion, setProveedorDireccion] = useState('');
@@ -25,6 +32,16 @@ const FormProveedor = (props) => {
     setProveedorDireccion(event.target.value);
   };
 
+  const handleGetProveedores = async () => {
+    const { data, status } = await handleApiRequest(
+      'GET',
+      '/Proveedor/Get',
+      '',
+    );
+    setDataProveedores(data);
+    setAlreadyData(false);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -40,7 +57,9 @@ const FormProveedor = (props) => {
       '/Proveedor/Post',
       postData,
     );
-    console.log(data), console.log(status);
+
+    handleGetProveedores();
+
     setVisible(false);
   };
 
@@ -87,6 +106,8 @@ FormProveedor.propTypes = {
   buttonClass: PropTypes.string.isRequired,
   setVisible: PropTypes.func.isRequired,
   containerInputs: PropTypes.string,
+  setAlreadyData: PropTypes.func.isRequired,
+  setDataProveedores: PropTypes.func.isRequired,
 };
 
 FormProveedor.defaultProps = {

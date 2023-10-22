@@ -20,6 +20,8 @@ const Forms = (props) => {
     customClass,
     visible,
     setVisible,
+    setDataProveedores,
+    setAlreadyData,
   } = props;
 
   const handleForms = () => {
@@ -31,6 +33,8 @@ const Forms = (props) => {
             setVisible={setVisible}
             buttonText={buttonText}
             typeFor={typeFor}
+            setDataProveedores={setDataProveedores}
+            setAlreadyData={setAlreadyData}
           ></FormProveedor>
         );
     }
@@ -65,6 +69,8 @@ Forms.propTypes = {
   customClass: PropTypes.string,
   visible: PropTypes.bool.isRequired,
   setVisible: PropTypes.func.isRequired,
+  setDataProveedores: PropTypes.func.isRequired,
+  setAlreadyData: PropTypes.func.isRequired,
 };
 
 Forms.defaultProps = {

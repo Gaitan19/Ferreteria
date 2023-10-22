@@ -3,10 +3,10 @@ import HeadPage from '@/components/HeadPage';
 import Layout from '@/components/Layout';
 import { CSpinner, CTooltip } from '@coreui/react';
 import { useState, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import Button from '@/components/Button';
 import { FaPlus } from 'react-icons/fa';
 import Forms from '@/components/Forms';
+import handleApiRequest from '@/services';
 
 const Proveedor = () => {
   const [alreadyData, setAlreadyData] = useState(false);
@@ -15,18 +15,16 @@ const Proveedor = () => {
   const [visible, setVisible] = useState(false);
   const [typeForm, setTypeForm] = useState('add');
 
-  const state = useSelector((state) => state);
-
   const fetchData = useCallback(async () => {
-    if (state instanceof Promise) {
-      state.then((resolvedState) => {
-        if (resolvedState && resolvedState.ferreteria.proveedores) {
-          const { proveedores } = resolvedState.ferreteria;
-          setDataProveedores(proveedores);
-        }
-      });
-    } else if (state.ferreteria.proveedores) {
-      setDataProveedores(state.ferreteria.proveedores);
+    try {
+      const { data, status } = await handleApiRequest(
+        'GET',
+        '/Proveedor/Get',
+        '',
+      );
+      setDataProveedores(data);
+    } catch (error) {
+      alertMessage.error(error);
     }
   }, [setDataProveedores]);
 
@@ -148,6 +146,8 @@ const Proveedor = () => {
                   setVisible={setVisible}
                   type="proveedor"
                   typeFor={typeForm}
+                  setDataProveedores={setDataProveedores}
+                  setAlreadyData={setAlreadyData}
                 ></Forms>
               </>
             ) : (
