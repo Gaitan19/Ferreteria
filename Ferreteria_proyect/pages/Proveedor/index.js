@@ -16,6 +16,7 @@ const Proveedor = () => {
   const [dataRow, setDataRow] = useState([]);
   const [visible, setVisible] = useState(false);
   const [editVisible, setEditVisible] = useState(false);
+  const [showVisible, setShowVisible] = useState(false);
   const [typeForm, setTypeForm] = useState('add');
 
   const fetchData = useCallback(async () => {
@@ -40,6 +41,7 @@ const Proveedor = () => {
     { field: 'nombre', headerName: 'Nombre', width: 130 },
     { field: 'telefono', headerName: 'Telefono', width: 130 },
 
+    // show--------------------------
     {
       field: 'show',
       headerName: 'show',
@@ -50,9 +52,12 @@ const Proveedor = () => {
               variant="contained"
               color="primary"
               onClick={(event) => {
-                console.log('di click', cellValues);
                 const { row } = cellValues;
-                console.log(row);
+                const tempProveedor = dataProveedores.filter(
+                  (proveedorTemp) => proveedorTemp.id === row.id,
+                );
+                setDataProveedor(tempProveedor);
+                setShowVisible(true);
               }}
             >
               show
@@ -73,7 +78,6 @@ const Proveedor = () => {
           const tempProveedor = dataProveedores.filter(
             (proveedorTemp) => proveedorTemp.id === row.id,
           );
-          console.log(tempProveedor);
           setDataProveedor(tempProveedor);
           setEditVisible(true);
         };
@@ -177,6 +181,16 @@ const Proveedor = () => {
                   setVisible={setEditVisible}
                   type="proveedor"
                   typeFor="editar"
+                  setDataProveedores={setDataProveedores}
+                  setAlreadyData={setAlreadyData}
+                  item={dataProveedor[0]}
+                />
+                <Forms
+                  visible={showVisible}
+                  setVisible={setShowVisible}
+                  type="proveedor"
+                  typeFor="show"
+                  disabled
                   setDataProveedores={setDataProveedores}
                   setAlreadyData={setAlreadyData}
                   item={dataProveedor[0]}

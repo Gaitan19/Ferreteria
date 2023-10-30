@@ -15,6 +15,7 @@ const FormProveedor = (props) => {
     setDataProveedores,
     setAlreadyData,
     proveedor,
+    disabled,
   } = props;
 
   const [provedorName, setProveedorName] = useState(
@@ -26,10 +27,6 @@ const FormProveedor = (props) => {
   const [provedorNumero, setProveedorNumero] = useState(
     proveedor.telefonoProveedor || '',
   );
-
-  // useEffect(() => {
-  //   console.log('proveedor :>> ', proveedor);
-  // }, []);
 
   const handleNombreProveedor = (event) => {
     setProveedorName(event.target.value);
@@ -94,6 +91,7 @@ const FormProveedor = (props) => {
     <form className="Forms-general" onSubmit={handleSubmit}>
       <div className={containerInputs}>
         <Input
+          disabled={disabled}
           text="Nombre Proveedor"
           placeholder="Nombre"
           type="text"
@@ -103,6 +101,7 @@ const FormProveedor = (props) => {
         />
 
         <Input
+          disabled={disabled}
           text="Telefono"
           placeholder="Telefono"
           type="text"
@@ -112,6 +111,7 @@ const FormProveedor = (props) => {
         />
 
         <Input
+          disabled={disabled}
           text="Direccion"
           placeholder="Direccion"
           type="text"
@@ -121,11 +121,13 @@ const FormProveedor = (props) => {
           value={provedorDireccion}
         />
       </div>
-      <Button
-        buttonType="submit"
-        buttonText={buttonText}
-        customClass={buttonClass}
-      ></Button>
+      {!disabled && (
+        <Button
+          buttonType="submit"
+          buttonText={buttonText}
+          customClass={buttonClass}
+        ></Button>
+      )}
     </form>
   );
 };
@@ -139,6 +141,7 @@ FormProveedor.propTypes = {
   setAlreadyData: PropTypes.func.isRequired,
   setDataProveedores: PropTypes.func.isRequired,
   proveedor: PropTypes.object,
+  disabled: PropTypes.bool.isRequired,
 };
 
 FormProveedor.defaultProps = {

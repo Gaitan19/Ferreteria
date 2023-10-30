@@ -13,6 +13,7 @@ const Input = (props) => {
     children,
     divClass,
     value,
+    disabled,
   } = props;
 
   return (
@@ -26,6 +27,7 @@ const Input = (props) => {
           required={required}
           onChange={onChange}
           value={value}
+          disabled={disabled}
         />
         {children}
       </div>
@@ -45,6 +47,7 @@ Input.propTypes = {
   divClass: PropTypes.string,
   children: PropTypes.node,
   value: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -58,6 +61,7 @@ Input.defaultProps = {
   divClass: '',
   children: <></>,
   value: '',
+  disabled: false,
 };
 
 export default Input;

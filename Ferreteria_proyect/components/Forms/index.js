@@ -23,6 +23,7 @@ const Forms = (props) => {
     setDataProveedores,
     setAlreadyData,
     item,
+    disabled,
   } = props;
 
   const handleForms = () => {
@@ -37,6 +38,7 @@ const Forms = (props) => {
             setDataProveedores={setDataProveedores}
             setAlreadyData={setAlreadyData}
             proveedor={item}
+            disabled={disabled}
           ></FormProveedor>
         );
     }
@@ -74,6 +76,7 @@ Forms.propTypes = {
   setDataProveedores: PropTypes.func.isRequired,
   setAlreadyData: PropTypes.func.isRequired,
   item: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 Forms.defaultProps = {
@@ -84,6 +87,7 @@ Forms.defaultProps = {
   buttonText: 'Save',
   customClass: 'Forms',
   item: {},
+  disabled: false,
 };
 
 export default Forms;
