@@ -66,11 +66,9 @@ const Proveedor = () => {
       field: 'editar',
       headerName: 'Editar',
       renderCell: (cellValues) => {
-        // las funcion editar
+        // las funcion editar--------------------------------
 
         const handleClickEdit = (event) => {
-          // dataProveedores
-
           const { row } = cellValues;
           const tempProveedor = dataProveedores.filter(
             (proveedorTemp) => proveedorTemp.id === row.id,
@@ -87,11 +85,6 @@ const Proveedor = () => {
             <Button
               variant="contained"
               color="primary"
-              // onClick={(event) => {
-              //   console.log('di click', cellValues);
-              //   const { row } = cellValues;
-              //   console.log('info provedoor:', row);
-              // }}
               onClick={handleClickEdit}
             >
               Editar
@@ -101,6 +94,7 @@ const Proveedor = () => {
       },
     },
 
+    // eliminar-------------------------------
     {
       field: 'eliminar',
       headerName: 'eliminar',
@@ -111,9 +105,17 @@ const Proveedor = () => {
               variant="contained"
               color="primary"
               onClick={(event) => {
-                console.log('di click', cellValues);
                 const { row } = cellValues;
-                console.log(row);
+
+                const tempData = dataProveedores.filter((data) => {
+                  if (data.id !== row.id) {
+                    return data;
+                  } else {
+                    handleApiRequest('PUT', '/Proveedor/eliminar', data);
+                  }
+                });
+                setAlreadyData(false);
+                setDataProveedores(tempData);
               }}
             >
               eliminar
@@ -128,11 +130,13 @@ const Proveedor = () => {
     if (dataProveedores.length > 0 && alreadyData === false) {
       const temRow = [];
       dataProveedores.forEach((proveedor) => {
-        temRow.push({
-          id: proveedor.id,
-          nombre: proveedor.nombreProveedor,
-          telefono: proveedor.telefonoProveedor,
-        });
+        if (proveedor.estado) {
+          temRow.push({
+            id: proveedor.id,
+            nombre: proveedor.nombreProveedor,
+            telefono: proveedor.telefonoProveedor,
+          });
+        }
       });
       setDataRow(temRow);
       setAlreadyData(true);
