@@ -1,10 +1,10 @@
+import { CSpinner, CTooltip } from '@coreui/react';
+import { useState, useEffect, useCallback } from 'react';
+import { FaPlus } from 'react-icons/fa';
 import DataTable from '@/components/DataTable';
 import HeadPage from '@/components/HeadPage';
 import Layout from '@/components/Layout';
-import { CSpinner, CTooltip } from '@coreui/react';
-import { useState, useEffect, useCallback } from 'react';
 import Button from '@/components/Button';
-import { FaPlus } from 'react-icons/fa';
 import Forms from '@/components/Forms';
 import handleApiRequest from '@/services';
 import { alertMessage } from '@/components/Alert';
@@ -114,9 +114,8 @@ const Proveedor = () => {
                 const tempData = dataProveedores.filter((data) => {
                   if (data.id !== row.id) {
                     return data;
-                  } else {
-                    handleApiRequest('PUT', '/Proveedor/eliminar', data);
                   }
+                  handleApiRequest('PUT', '/Proveedor/eliminar', data);
                 });
                 setAlreadyData(false);
                 setDataProveedores(tempData);
@@ -173,7 +172,7 @@ const Proveedor = () => {
                   visible={visible}
                   setVisible={setVisible}
                   type="proveedor"
-                  setDataProveedores={setDataProveedores}
+                  setData={setDataProveedores}
                   setAlreadyData={setAlreadyData}
                 />
                 <Forms
@@ -181,7 +180,7 @@ const Proveedor = () => {
                   setVisible={setEditVisible}
                   type="proveedor"
                   typeFor="editar"
-                  setDataProveedores={setDataProveedores}
+                  setData={setDataProveedores}
                   setAlreadyData={setAlreadyData}
                   item={dataProveedor[0]}
                 />
@@ -191,7 +190,7 @@ const Proveedor = () => {
                   type="proveedor"
                   typeFor="show"
                   disabled
-                  setDataProveedores={setDataProveedores}
+                  setData={setDataProveedores}
                   setAlreadyData={setAlreadyData}
                   item={dataProveedor[0]}
                 />

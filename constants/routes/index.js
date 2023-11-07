@@ -5,6 +5,7 @@ export const routes = {
   option2: '/Inventario',
   option3: '/Proveedor',
   option4: '/Facturar',
+  option5: '/Categorias',
 };
 
 export const menuOptions = [
@@ -23,5 +24,9 @@ export const menuOptions = [
   {
     text: 'Facturar',
     route: routes.option4,
+  },
+  {
+    text: 'Categorias',
+    route: routes.option5,
   },
 ];

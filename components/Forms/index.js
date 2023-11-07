@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import {
   CButton,
   CModal,
@@ -8,6 +9,7 @@ import {
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import FormProveedor from './FormProveedor';
+import FormCategoriaProduct from './FormCategoriaProduct';
 
 const Forms = (props) => {
   const {
@@ -20,7 +22,7 @@ const Forms = (props) => {
     customClass,
     visible,
     setVisible,
-    setDataProveedores,
+    setData,
     setAlreadyData,
     item,
     disabled,
@@ -35,11 +37,22 @@ const Forms = (props) => {
             setVisible={setVisible}
             buttonText={buttonText}
             typeFor={typeFor}
-            setDataProveedores={setDataProveedores}
+            setData={setData}
             setAlreadyData={setAlreadyData}
             proveedor={item}
             disabled={disabled}
           ></FormProveedor>
+        );
+
+      case 'categoriaProducts':
+        return (
+          <FormCategoriaProduct
+            buttonClass={buttonClass}
+            setVisible={setVisible}
+            buttonText={buttonText}
+            setAlreadyData={setAlreadyData}
+            setData={setData}
+          />
         );
     }
   };
@@ -73,7 +86,7 @@ Forms.propTypes = {
   customClass: PropTypes.string,
   visible: PropTypes.bool.isRequired,
   setVisible: PropTypes.func.isRequired,
-  setDataProveedores: PropTypes.func.isRequired,
+  setData: PropTypes.func.isRequired,
   setAlreadyData: PropTypes.func.isRequired,
   item: PropTypes.func,
   disabled: PropTypes.bool,

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import Button from '../Button';
 import Input from '../Input';
-import { useEffect, useState } from 'react';
 import { alertMessage } from '../Alert';
 import handleApiRequest from '@/services';
 
@@ -12,7 +12,7 @@ const FormProveedor = (props) => {
     buttonClass,
     setVisible,
     containerInputs,
-    setDataProveedores,
+    setData,
     setAlreadyData,
     proveedor,
     disabled,
@@ -46,7 +46,7 @@ const FormProveedor = (props) => {
       '/Proveedor/Get',
       '',
     );
-    setDataProveedores(data);
+    setData(data);
     setAlreadyData(false);
   };
 
@@ -139,7 +139,7 @@ FormProveedor.propTypes = {
   setVisible: PropTypes.func.isRequired,
   containerInputs: PropTypes.string,
   setAlreadyData: PropTypes.func.isRequired,
-  setDataProveedores: PropTypes.func.isRequired,
+  setData: PropTypes.func.isRequired,
   proveedor: PropTypes.object,
   disabled: PropTypes.bool.isRequired,
 };
