@@ -173,14 +173,14 @@ const Inventario = () => {
                 <Forms
                   visible={visible}
                   setVisible={setVisible}
-                  type="proveedor"
+                  type="productos"
                   setData={setDataProductos}
                   setAlreadyData={setAlreadyData}
                 />
                 <Forms
                   visible={editVisible}
                   setVisible={setEditVisible}
-                  type="proveedor"
+                  type="productos"
                   typeFor="editar"
                   setData={setDataProductos}
                   setAlreadyData={setAlreadyData}
@@ -189,7 +189,7 @@ const Inventario = () => {
                 <Forms
                   visible={showVisible}
                   setVisible={setShowVisible}
-                  type="proveedor"
+                  type="productos"
                   typeFor="show"
                   disabled
                   setData={setDataProductos}
