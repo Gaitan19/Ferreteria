@@ -25,6 +25,16 @@ const FormCategoriaProduct = (props) => {
     setCategoriaDescripcion(event.target.value);
   };
 
+  const handleGetCategorias = async () => {
+    const { data, status } = await handleApiRequest(
+      'GET',
+      '/Categoria/Get',
+      '',
+    );
+    setData(data);
+    setAlreadyData(false);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const postData = {
@@ -37,8 +47,8 @@ const FormCategoriaProduct = (props) => {
       '/Categoria/Post',
       postData,
     );
-    setData(data);
-    setAlreadyData(false);
+    handleGetCategorias();
+
     setVisible(false);
   };
 
